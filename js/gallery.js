@@ -48,6 +48,8 @@ var mJson;
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
 var mUrl = 'images.json';
 
+//this is the main function that handles how the images are cycled through the slideshow
+
 function GalleryImage() {
   var location;
   var description;
@@ -66,6 +68,8 @@ if(mCurrentIndex < 0){
   mCurrentIndex = mImages.length - 1;
 }
 
+//this also fetches the image data
+  
   document.getElementById("photo").src = mJson.images[mCurrentIndex].imgPath;
   var loc = document.getElementsByClassName('location');
   loc[0].innerHTML = "Location: " + mJson.images[mCurrentIndex].imgLocation;
@@ -77,7 +81,7 @@ if(mCurrentIndex < 0){
 
   
 
-
+//swaps the photo here
 
   mLastFrameTime = 0;
   mCurrentIndex++;
@@ -125,6 +129,8 @@ window.addEventListener('load', function() {
 
 }, false);
 
+//the array for all the images and its metadata
+
 function iterateJSON(mJson){
 
   for(var x = 0; x < mJson.images.length; x++){
@@ -136,7 +142,7 @@ function iterateJSON(mJson){
   }
 
 
-
+//I did add this detail to make the rotations occur on click of the top buttom
 }
 function toggleDetails(){
   if($(".moreIndicator").hasClass("rot90")){
@@ -149,6 +155,8 @@ function toggleDetails(){
   $(".details").slideToggle("slow", "linear");
 }
 
+
+//the function to fetch the json and parse and iterate it. 
 
 function fetchJSON() {
   mRequest.onreadystatechange = function() {
@@ -165,5 +173,5 @@ function fetchJSON() {
 
 
 
-
+//as the code suggests, this fetches json
 fetchJSON();
